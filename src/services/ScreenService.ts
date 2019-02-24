@@ -1,5 +1,6 @@
 import { BehaviorSubject } from "rxjs";
 import { useState, useEffect } from "react";
+import { useObservable } from ".";
 
 export enum ScreenSize {
   mobile = 1,
@@ -17,28 +18,17 @@ const checkScreen = (size: number) => {
   }
 };
 
-const screenSizeObserver = new BehaviorSubject<ScreenSize>(
+const screenSizeObservable = new BehaviorSubject<ScreenSize>(
   checkScreen(window.innerWidth)
 );
 
 window.addEventListener("resize", () => {
   const size = checkScreen(window.innerWidth);
-  if (size !== screenSizeObserver.value) {
-    screenSizeObserver.next(size);
+  if (size !== screenSizeObservable.value) {
+    screenSizeObservable.next(size);
   }
 });
 
-const useScreenSize = () => {
-  const [size, setSize] = useState(screenSizeObserver.value);
-  useEffect(() => {
-    const subscription = screenSizeObserver.subscribe(newSize => {
-      setSize(newSize);
-    });
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, []);
-  return size;
-};
+const useScreenSize = () => useObservable(screenSizeObservable);
 
-export { screenSizeObserver, useScreenSize };
+export { screenSizeObservable, useScreenSize };

@@ -917,6 +917,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-swipeable@^4.2.3":
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/@types/react-swipeable/-/react-swipeable-4.2.3.tgz#00147b13c711ee2d29a3c987e6da69b09e98715b"
+  integrity sha512-ViEk6+mwIo41H90lQFaR3c4GInNcmAODVYEky0rx9nG8ZgYBsHKQ950v5Mhv5jHWgrcKhOFebOdvpPzhocUfqw==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@16.8.4":
   version "16.8.4"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.4.tgz#134307f5266e866d5e7c25e47f31f9abd5b2ea34"
